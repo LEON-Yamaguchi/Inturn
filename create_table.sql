@@ -1,0 +1,4 @@
+CREATE TABLE KIONDATA(
+	HIDUKE DATE,
+	PAPR numeric(3,1)
+)
