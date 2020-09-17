@@ -1,12 +1,19 @@
-import MySQLdb
+import mysql.connector as mydb
 
-# 接続する
-conn = MySQLdb.connect(
-     unix_socket = '/Applications/MAMP/tmp/mysql/mysql.sock',
-    user='root',
-    passwd='leon0704',
+# コネクションの作成
+conn = mydb.connect(
     host='localhost',
-    db='mysql')
+    port='3306',
+    user='root',
+    password='leon0704',
+    database='kishoudata'
+)
 
-# 接続を閉じる
-con.close
+# コネクションが切れた時に再接続してくれるよう設定
+conn.ping(reconnect=True)
+
+# 接続できているかどうか確認
+print(conn.is_connected())
+
+# DB操作用にカーソルを作成
+cur = conn.cursor()
